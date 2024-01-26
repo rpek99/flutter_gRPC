@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:users_api/users_api.dart';
@@ -25,6 +26,25 @@ class UserService extends UserServiceBase {
   @override
   Future<UsersResponse> getUsers(ServiceCall call, UsersRequest request) async {
     return UsersResponse(users: users);
+  }
+
+  @override
+  Future<User> getUserByUserName(
+      ServiceCall call, UserByUserNameRequest request) async {
+    final name = request.name;
+
+    return users.firstWhere(
+      (user) => user.name == name,
+      orElse: () => User(),
+    );
+  }
+
+  @override
+  Stream<User> streamUsers(ServiceCall call, Stream<User> request) async* {
+    await for (var user in request) {
+      for (var user in users) yield user;
+      users.add(user);
+    }
   }
 }
 

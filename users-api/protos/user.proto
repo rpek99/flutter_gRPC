@@ -8,6 +8,10 @@ message UserByIdRequest {
     string id = 1;
 }
 
+message UserByUserNameRequest {
+    string name = 1;
+}
+
 message UsersResponse {
     repeated User users = 1;
 }
@@ -20,5 +24,7 @@ message User {
 
 service UserService {
     rpc getUsers(UsersRequest) returns (UsersResponse);
-    rpc getUserById(UserByIdRequest) returns (User);
+    rpc getUserById(UserByIdRequest) returns (User);   
+    rpc getUserByUserName(UserByUserNameRequest) returns (User);
+    rpc streamUsers(stream User) returns (stream User) {};
 }

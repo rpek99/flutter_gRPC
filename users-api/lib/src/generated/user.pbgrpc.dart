@@ -29,6 +29,14 @@ class UserServiceClient extends $grpc.Client {
       '/UserService/getUserById',
       ($0.UserByIdRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.User.fromBuffer(value));
+  static final _$getUserByUserName = $grpc.ClientMethod<$0.UserByUserNameRequest, $0.User>(
+      '/UserService/getUserByUserName',
+      ($0.UserByUserNameRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.User.fromBuffer(value));
+  static final _$streamUsers = $grpc.ClientMethod<$0.User, $0.User>(
+      '/UserService/streamUsers',
+      ($0.User value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.User.fromBuffer(value));
 
   UserServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -42,6 +50,14 @@ class UserServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.User> getUserById($0.UserByIdRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getUserById, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.User> getUserByUserName($0.UserByUserNameRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getUserByUserName, request, options: options);
+  }
+
+  $grpc.ResponseStream<$0.User> streamUsers($async.Stream<$0.User> request, {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$streamUsers, request, options: options);
   }
 }
 
@@ -64,6 +80,20 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.UserByIdRequest.fromBuffer(value),
         ($0.User value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.UserByUserNameRequest, $0.User>(
+        'getUserByUserName',
+        getUserByUserName_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.UserByUserNameRequest.fromBuffer(value),
+        ($0.User value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.User, $0.User>(
+        'streamUsers',
+        streamUsers,
+        true,
+        true,
+        ($core.List<$core.int> value) => $0.User.fromBuffer(value),
+        ($0.User value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.UsersResponse> getUsers_Pre($grpc.ServiceCall call, $async.Future<$0.UsersRequest> request) async {
@@ -74,6 +104,12 @@ abstract class UserServiceBase extends $grpc.Service {
     return getUserById(call, await request);
   }
 
+  $async.Future<$0.User> getUserByUserName_Pre($grpc.ServiceCall call, $async.Future<$0.UserByUserNameRequest> request) async {
+    return getUserByUserName(call, await request);
+  }
+
   $async.Future<$0.UsersResponse> getUsers($grpc.ServiceCall call, $0.UsersRequest request);
   $async.Future<$0.User> getUserById($grpc.ServiceCall call, $0.UserByIdRequest request);
+  $async.Future<$0.User> getUserByUserName($grpc.ServiceCall call, $0.UserByUserNameRequest request);
+  $async.Stream<$0.User> streamUsers($grpc.ServiceCall call, $async.Stream<$0.User> request);
 }

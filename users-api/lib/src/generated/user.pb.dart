@@ -113,6 +113,56 @@ class UserByIdRequest extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+class UserByUserNameRequest extends $pb.GeneratedMessage {
+  factory UserByUserNameRequest({
+    $core.String? name,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    return $result;
+  }
+  UserByUserNameRequest._() : super();
+  factory UserByUserNameRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserByUserNameRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UserByUserNameRequest', createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'name')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserByUserNameRequest clone() => UserByUserNameRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserByUserNameRequest copyWith(void Function(UserByUserNameRequest) updates) => super.copyWith((message) => updates(message as UserByUserNameRequest)) as UserByUserNameRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UserByUserNameRequest create() => UserByUserNameRequest._();
+  UserByUserNameRequest createEmptyInstance() => create();
+  static $pb.PbList<UserByUserNameRequest> createRepeated() => $pb.PbList<UserByUserNameRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UserByUserNameRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserByUserNameRequest>(create);
+  static UserByUserNameRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+}
+
 class UsersResponse extends $pb.GeneratedMessage {
   factory UsersResponse({
     $core.Iterable<User>? users,

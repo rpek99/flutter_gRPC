@@ -37,6 +37,18 @@ const UserByIdRequest$json = {
 final $typed_data.Uint8List userByIdRequestDescriptor = $convert.base64Decode(
     'Cg9Vc2VyQnlJZFJlcXVlc3QSDgoCaWQYASABKAlSAmlk');
 
+@$core.Deprecated('Use userByUserNameRequestDescriptor instead')
+const UserByUserNameRequest$json = {
+  '1': 'UserByUserNameRequest',
+  '2': [
+    {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+  ],
+};
+
+/// Descriptor for `UserByUserNameRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userByUserNameRequestDescriptor = $convert.base64Decode(
+    'ChVVc2VyQnlVc2VyTmFtZVJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZQ==');
+
 @$core.Deprecated('Use usersResponseDescriptor instead')
 const UsersResponse$json = {
   '1': 'UsersResponse',
